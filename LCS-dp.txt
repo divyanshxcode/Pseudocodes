@@ -1,0 +1,8 @@
+int LCS(i,j)
+{
+    if (A[i]=B[j])
+        LCS(i,j) = 1+LCS(i-1, j-1)
+
+    else
+        LCS(i,j) = max(LCS(i-1, j), LCS(i,j-1))
+}

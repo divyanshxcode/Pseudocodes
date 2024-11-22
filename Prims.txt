@@ -1,0 +1,17 @@
+Prim(graph, source)
+{
+    for each v in graph 
+    dist[v] = ∞
+    prev[v] = none
+    dist[source] = 0
+    Q = all vertices
+
+    while Q is not empty
+        u = min dist[v] in Q
+        remove u from Q;
+
+        for each neighbor v of u
+            if v in Q and weight(u, v) < dist[v]
+                dist[v] = weight(u, v);
+                prev[v] = u;
+}

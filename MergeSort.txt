@@ -1,32 +1,25 @@
-merge_sort(arr[]){
+merge_sort(arr){
     if length of arr > 1
-    {
         mid = length of arr / 2
         left = arr[0...mid-1]
         right = arr[mid...end]
 
         merge_sort(left)                 # Sort left & right
         merge_sort(right)
-
         merge(arr, left, right)          # Merge the sorted halves
-    }
 }
 
 merge(arr, left[], right[])
 {
     i = 0, j = 0, k = 0
-    while (i < length of left and j < length of right)
+    while (i < length of left & j < length of right)
     {
         if left[i] <= right[j] 
-        {
             arr[k] = left[i]
             i = i + 1
-        }
         else 
-        {
             arr[k] = right[j]
             j = j + 1
-        }
         k = k + 1
     }
 }
