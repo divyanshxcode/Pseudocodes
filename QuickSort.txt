@@ -1,0 +1,22 @@
+quick_sort(arr[], P, Q)
+    if (P < Q)
+        pivot = partitionArray(arr[], P, Q)   #Get the correct pivot position
+        
+        quick_sort(arr[], P, pivot - 1)       #Sort left
+        quick_sort(arr[], pivot + 1, Q)       #Sort right
+
+partitionArray(arr[], P, Q)
+    pivot = arr[P]           #Pivot is the first element
+    i = P + 1
+    j = Q
+    
+    while (i <= j) do
+        while (arr[i] <= pivot && i <= Q)    #Find element greater than pivot
+            i = i + 1
+        while (arr[j] >= pivot && j >= P + 1) #Find element smaller than pivot
+            j = j - 1
+        if (i < j)
+            swap(arr[i], arr[j])              #Swap elements out of place
+    
+    swap(arr[P], arr[j])      #Place pivot in correct position
+    return j                  

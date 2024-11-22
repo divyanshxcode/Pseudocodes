@@ -1,0 +1,28 @@
+n_queens(board[][], row, n) {
+    if row == n 
+        return true
+    for col = 0 to n - 1 
+    {
+        if is_safe(board, row, col, n) 
+        {
+            board[row][col] = 1 #Mark Queen Present
+            if n_queens(board, row + 1, n) #Rec-Call to place Queen in next row
+                return true
+            board[row][col] = 0
+        }
+    }
+    return false
+}
+
+is_safe(board[][], row, col, n){
+    for i = 0 to row - 1 
+        if board[i][col] == 1 #Check Up 
+            return false
+    for i = row - 1, j = col - 1 while i >= 0 and j >= 0 #Check Left Diagonal
+        if board[i][j] == 1 
+            return false
+    for i = row - 1, j = col + 1 while i >= 0 and j < n #Check Right Diagonal
+        if board[i][j] == 1 
+            return false
+    return true
+}

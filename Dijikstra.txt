@@ -1,0 +1,29 @@
+dijkstra(graph[], source)
+{
+    distance[source] = 0
+    for each vertex v in graph
+        if v != source
+            distance[v] = ∞
+        previous[v] = null
+
+    priority_queue = empty             #Min-priority queue
+    insert(priority_queue, source, 0)  #Insert source with distance 0
+
+    while priority_queue is not empty
+    {
+        u = extract_min(priority_queue)    #Extract vertex u of smallest distance
+
+        for each neighbor v of u
+        {
+            alt = distance[u] + weight(u, v)  #Alternative distance through u
+            if alt < distance[v]
+            {
+                distance[v] = alt
+                previous[v] = u
+                insert(priority_queue, v, alt)   #Insert v with updated distance
+            }
+        }
+    }
+
+    return distance[], previous[]
+}
